@@ -4,10 +4,10 @@ import { Flights, Metrics } from "../types";
 import { useSearchForm } from "./use_search_form";
 
 export const useFlights = () => {
-	const { airline, year } = useSearchForm();
+	const { airline, month } = useSearchForm();
 	const flights = useQuery<{ metrics: Metrics; flights: Flights }>({
-		queryKey: ["flights", airline, year],
-		queryFn: () => getFlights(airline, year),
+		queryKey: ["flights", airline, month],
+		queryFn: () => getFlights(airline, month),
 	});
 
 	return flights.data;

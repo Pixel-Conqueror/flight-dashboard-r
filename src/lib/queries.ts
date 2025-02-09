@@ -24,5 +24,7 @@ async function makeRequest(
 
 export const getAirlines = async () => makeRequest("airlines");
 
-export const getFlights = async (airline: string | null, year: string | null) =>
-	makeRequest("flights", { code: airline, year });
+export const getFlights = async (
+	airline: string | null,
+	month: string | null,
+) => makeRequest("flights", { code: airline, month });

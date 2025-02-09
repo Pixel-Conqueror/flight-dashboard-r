@@ -36,8 +36,8 @@ export type Metrics = {
 
 export type SearchFormContextType = {
 	airline: string | null;
-	year: string | null;
+	month: string | null;
 	setAirline: (airline: string | null) => void;
-	setYear: (year: string | null) => void;
+	setMonth: (month: string | null) => void;
 	reset: () => void;
 };

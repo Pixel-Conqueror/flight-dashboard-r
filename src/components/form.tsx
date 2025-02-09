@@ -2,18 +2,18 @@ import { Button, Flex, Select } from "@mantine/core";
 import { useAirlines } from "../hooks/use_airlines";
 import { useSearchForm } from "../hooks/use_search_form";
 
-const MIN_YEAR = new Date("1900-01-01");
-const MAX_YEAR = new Date();
+const MIN_MONTH = 1;
+const MAX_MONTH = 12;
 const INPUT_WIDTH = 250;
 
-const years = Array.from(
-	{ length: MAX_YEAR.getFullYear() - MIN_YEAR.getFullYear() + 1 },
-	(_, i) => MIN_YEAR.getFullYear() + i,
+const months = Array.from(
+	{ length: MAX_MONTH - MIN_MONTH + 1 },
+	(_, i) => MIN_MONTH + i,
 ).reverse();
 
 export function Form() {
 	const airlines = useAirlines();
-	const { airline, year, setAirline, setYear, reset } = useSearchForm();
+	const { airline, month, setAirline, setMonth, reset } = useSearchForm();
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -35,15 +35,15 @@ export function Form() {
 					w={INPUT_WIDTH}
 				/>
 				<Select
-					label="Année"
-					value={year}
-					onChange={(value) => setYear(value)}
-					data={years.map((year) => ({
-						value: year.toString(),
-						label: year.toString(),
+					label="Mois"
+					value={month}
+					onChange={(value) => setMonth(value)}
+					data={months.map((month) => ({
+						value: month.toString(),
+						label: month.toString(),
 					}))}
 					clearable
-					placeholder="Sélectionnez une année"
+					placeholder="Sélectionnez un mois"
 					w={INPUT_WIDTH}
 				/>
 				<Button type="reset" variant="subtle">
